@@ -84,13 +84,13 @@ Before running the application, ensure you have the following installed:
 ├── static/               # Static assets (CSS, JS)
 ├── README.md             # Project documentation
 ├── requirements.txt      # Dependencies
-├── indexdir
-├── reverse.wsgi
-├── app.wsgi 
-├── reverse.py
-├── test.wsgi 
-├── wsgi.py
-├── __pycache__                        
+├── indexdir              # Directory for storing Whoosh search engine index.
+├── reverse.wsgi          # WSGI script for the standalone reverse application.
+├── app.wsgi              # Main WSGI script for deploying the primary Flask application.
+├── reverse.py            # A standalone Flask application for reversing strings.
+├── test.wsgi             # Test WSGI script for debugging server configurations.
+├── wsgi.py               # Alternate WSGI script for deploying the Flask application.
+├── __pycache__           # Directory for Python’s compiled bytecode.              
 ```
 
 ## Testing
