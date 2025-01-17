@@ -43,8 +43,9 @@ Before running the application, ensure you have the following installed:
 1. Clone the repository:
    ```bash
    git clone https://github.com/JUPA8/Web-Crawler-Search-Updated.git
+   ```
 
-   2. Create and activate a virtual environment:
+2. Create and activate a virtual environment:
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
