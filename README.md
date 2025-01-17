@@ -35,7 +35,9 @@ Before running the application, ensure you have the following installed:
 - Requests
 - gunicorn
 
-Use eduVPN to access of the server of the university to see the webpage
+## Hints:
+1- Use eduVPN to access of the server of the university to see the webpage
+
 
 ## Installation
 1. Clone the repository:
@@ -107,5 +109,14 @@ Use eduVPN to access of the server of the university to see the webpage
 - `wsgi.app`: We run through it in the server to view our page.
 
 The link that you can search with it in the server of the university: http://vm146.rz.uni-osnabrueck.de/u001/app.wsgi/
+
+## Files: 
+The all files are served in the public_html of the server which can have a virtual environment and is already activated. 
+
+## Recommendation command to use it through the terminal:
+
+ls: to see all files in the file directory.
+nano (file name): to see what is inside the file and you can write, read, and make any maintain through the file.
+
 
 
