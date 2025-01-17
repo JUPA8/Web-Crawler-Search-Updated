@@ -78,12 +78,6 @@ Tracks and displays frequently searched terms on the `/analytics` page.
 
 ---
 
-## **Setup Instructions**
-
-### **1. Clone the Repository**
-```bash
-git clone https://github.com/YourRepo/YourProject.git
-
 
 ## Prerequisites
 Before running the application, ensure you have the following installed:
