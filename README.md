@@ -120,4 +120,11 @@ The link that you can search with it in the server of the university: http://vm1
 - nano (file name): to see what is inside the file and you can write, read, and make any maintain through the file.
 
 
+## Web Crawler Search Interface
+
+### Search Page
+![Search Page](images/Screenshot 2025-01-17 at 15.35.33.png)
+
+### Search Results
+![Search Results](images/Screenshot 2025-01-17 at 15.35.53.png)
 
