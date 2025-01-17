@@ -185,3 +185,11 @@ The link that you can search with it in the server of the university: http://vm1
 ![Search Results](images/screenshot_search_results.png)
 
 
+## Server information and also how to use it through terminal:
+
+- Firstly open the vpn and access to server university.
+- enter in the terminal ssh u001@vm146.rz.uni-osnabrueck.de.
+- Enter Password to enter the server.
+- go to file directory public_html.
+- check files by instructions that provided above..
+- you can see the webpage under this link: http://vm146.rz.uni-osnabrueck.de/u001/app.wsgi/
