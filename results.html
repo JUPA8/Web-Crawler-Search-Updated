@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Web Crawler</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Main content styles */
+        .main-content {
+            flex: 3;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .search-form {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-form input {
+            padding: 12px;
+            width: 70%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            padding: 12px 20px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background: #2980b9;
+        }
+
+        /* Results styles */
+        .results-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .result-item {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #fdfdfd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .result-item h2 a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .result-item h2 a:hover {
+            text-decoration: underline;
+        }
+
+        .result-snippet {
+            margin: 10px 0;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .result-meta {
+            font-size: 0.875rem;
+            color: #95a5a6;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            margin: 0 5px;
+            padding: 10px 15px;
+            color: #3498db;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .pagination a.active {
+            background: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Search Frequency</h3>
+            <ul>
+                {% for term, count in frequency.items() %}
+                <li>{{ term }}: {{ count }} times</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="main-content">
+            <header class="results-header">
+                <h1>Search Results</h1>
+                <p>
+                    Found {{ total_results }} result{% if total_results != 1 %}s{% endif %} for "{{ query }}"
+                </p>
+                <form action="{{ url_for('search') }}" method="get" class="search-form">
+                    <input type="text" name="q" value="{{ query }}" placeholder="Search again..." autofocus>
+                    <button type="submit">Search</button>
+                </form>
+            </header>
+
+            {% if results %}
+            <main class="results-list">
+                <ul>
+                    {% for result in results %}
+                    <li class="result-item">
+                        <h2><a href="{{ result['url'] }}" target="_blank">{{ result['title'] }}</a></h2>
+                        <p class="result-snippet">{{ result['snippet']|safe }}</p>
+                        <p class="result-meta">
+                            Domain: {{ result['domain'] }} | Date: {{ result['date'] }}
+                        </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Pagination Controls -->
+                <div class="pagination">
+                    {% if page > 1 %}
+                    <a href="{{ url_for('search', q=query, page=page-1) }}" class="prev-button">Previous</a>
+                    {% endif %}
+                    {% for p in range(1, total_pages + 1) %}
+                    <a href="{{ url_for('search', q=query, page=p) }}" 
+                       class="page-link {% if p == page %}active{% endif %}">{{ p }}</a>
+                    {% endfor %}
+                    {% if page < total_pages %}
+                    <a href="{{ url_for('search', q=query, page=page+1) }}" class="next-button">Next</a>
+                    {% endif %}
+                </div>
+            </main>
+            {% else %}
+            <div class="no-results">
+                <p>No results found. Please try different search terms.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer>
+        <a href="{{ url_for('home') }}" class="back-button">Back to Search</a>
+    </footer>
+</body>
+</html>
