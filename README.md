@@ -193,3 +193,7 @@ The link that you can search with it in the server of the university: http://vm1
 - go to file directory public_html.
 - check files by instructions that provided above..
 - you can see the webpage under this link: http://vm146.rz.uni-osnabrueck.de/u001/app.wsgi/
+
+
+
+ ## **I ALSO ADDED Zip File which corrected and maintained. you can download and start with the project if you face some bugs or error.**
