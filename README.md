@@ -35,6 +35,8 @@ Before running the application, ensure you have the following installed:
 - Requests
 - gunicorn
 
+Use eduVPN to access of the server of the university to see the webpage
+
 ## Installation
 1. Clone the repository:
    ```bash
