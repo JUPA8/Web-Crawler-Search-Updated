@@ -23,6 +23,68 @@ This project is a web crawler and search engine that crawls a website, indexes i
 - Pagination for large result sets.
 - Dark mode and a modern, responsive user interface.
 
+
+---
+
+## **Key Components**
+
+### 1. **`app.py`**
+This is the main file containing the Flask application logic. It:
+- Sets up the Whoosh search engine index.
+- Executes the web crawler to fetch and index data.
+- Provides routes for:
+  - `/app`: Displays the search page.
+  - `/search`: Displays search results.
+  - `/analytics`: Displays analytics on searched terms.
+
+### 2. **`crawler.py`**
+Implements the web crawler that:
+- Fetches pages starting from a given URL.
+- Extracts data such as title, URL, content, domain, and date.
+- Saves the extracted data to the Whoosh index.
+
+### 3. **`templates/`**
+Contains the frontend templates rendered by Flask:
+- `index.html`: Search form.
+- `results.html`: Displays search results.
+- `analytics.html`: Displays search analytics.
+
+### 4. **`static/`**
+Stores static assets like CSS and JavaScript files.
+
+### 5. **`requirements.txt`**
+Specifies the Python dependencies for the project.
+
+### 6. **Deployment Scripts**
+- `app.wsgi`: WSGI script for deployment.
+- `reverse.wsgi`: WSGI script for a standalone reverse string app.
+- `test.wsgi`: Testing script for the server.
+
+---
+
+## **How It Works**
+
+### **1. Web Crawling**
+The `crawler.py` script crawls the specified domain, extracts data, and stores it in the Whoosh index.
+
+### **2. Search Functionality**
+Users can:
+1. Enter a query on the `/app` page.
+2. View search results on `/search`.
+3. Filter results by date or domain.
+
+### **3. Analytics**
+Tracks and displays frequently searched terms on the `/analytics` page.
+
+---
+
+## **Setup Instructions**
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/YourRepo/YourProject.git
+
+
 ## Prerequisites
 Before running the application, ensure you have the following installed:
 
