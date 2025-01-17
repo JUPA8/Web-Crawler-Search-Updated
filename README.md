@@ -42,7 +42,7 @@ Before running the application, ensure you have the following installed:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/JUPA8/Web-Crawler-Search-Engine.git
+   git clone https://github.com/JUPA8/Web-Crawler-Search-Updated.git
 
    2. Create and activate a virtual environment:
    ```bash
